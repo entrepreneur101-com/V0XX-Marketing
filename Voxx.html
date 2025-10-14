@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>V0XX Marketing — Brand Voice & Digital Velocity</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://drive.google.com/uc?export=view&id=1QjO0BCtIefxH9ATRsYk2rPITaTS8z7D9" type="image/png">
+
+  <!-- Custom Font: Elika Gorica -->
+  <style>
+    @font-face {
+      font-family: 'Elika Gorica';
+      src: url('ElikaGorica.woff2') format('woff2'),
+           url('ElikaGorica.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root{
+      --primary-yellow: #EAC339;
+      --primary-purple: #9B55EB;
+      --neutral-gray: #545454;
+      --accent-gold: #CBAB38;
+      --white: #ffffff;
+      --radius: 12px;
+      --max-width: 1200px;
+      --ease: cubic-bezier(.2,.9,.3,1);
+    }
+
+    /* Reset & base */
+    *{box-sizing: border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Elika Gorica", sans-serif;
+      font-weight:400;
+      color:var(--neutral-gray);
+      background:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    header{
+      background:transparent;
+      padding:20px 0;
+    }
+
+    /* Nav */
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .logo img{
+      height:48px;
+    }
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:18px;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+    nav a{
+      font-size:0.95rem;
+      color:var(--neutral-gray);
+      padding:8px 10px;
+      border-radius:8px;
+      transition:all .18s var(--ease);
+    }
+    nav a:hover{ background: rgba(155,85,235,0.08); color:var(--primary-purple); transform:translateY(-2px) }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      min-height:66vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      margin-bottom:48px;
+    }
+    .hero .bg{
+      position:absolute;
+      inset:0;
+      background-image: url("https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg");
+      background-size:cover;
+      background-position:center;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+    }
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:var(--max-width);
+      padding:60px 20px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:24px;
+      align-items:center;
+      color:white;
+    }
+    .hero h1{
+      margin:0 0 12px 0;
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      font-weight:600;
+      color:var(--primary-yellow);
+    }
+    .hero p.lead{
+      margin:0 0 18px 0;
+      color:#f0f0f0;
+      font-size:1.05rem;
+    }
+    .cta-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:12px;
+      border:0;
+      cursor:pointer;
+      font-weight:600;
+      background:var(--primary-purple);
+      color:white;
+      transition: all .18s var(--ease);
+    }
+    .btn:hover{ background:#7e3bcc; transform:translateY(-4px) }
+    .btn.secondary{
+      background:var(--primary-yellow);
+      color:#000;
+    }
+    .btn.secondary:hover{ background:#d6ab28 }
+
+    /* Services */
+    .section-head h2{
+      margin:0;
+      font-size:1.6rem;
+      color:var(--primary-purple);
+      font-weight:600;
+    }
+    .services-grid{
+      display:grid;
+      gap:18px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .service{
+      background:var(--white);
+      padding:18px;
+      border-radius:14px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      transition: transform .16s var(--ease), box-shadow .16s var(--ease);
+      cursor:pointer;
+    }
+    .service:hover{ transform:translateY(-6px); box-shadow:0 18px 44px rgba(0,0,0,0.12) }
+    .service .icon{
+      width:56px;
+      height:56px;
+      border-radius:10px;
+      background:var(--primary-purple);
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:600;
+      flex-shrink:0;
+      font-size:1.15rem;
+    }
+    .service h3{
+      margin:0;
+      font-size:1rem;
+      font-weight:600;
+      color:var(--neutral-gray);
+    }
+    .service p{ margin:6px 0 0 0; color:#777; font-size:0.95rem; }
+
+    /* CTA */
+    .cta{
+      background: var(--accent-gold);
+      padding:36px;
+      border-radius:14px;
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      color:white;
+    }
+    .cta h3{ margin:0; font-size:1.3rem; font-weight:600 }
+    .cta p{ margin:6px 0 0 0; }
+
+    /* Footer */
+    footer{
+      margin-top:34px;
+      padding:28px 0;
+      border-top:1px solid rgba(0,0,0,0.08);
+      background:var(--primary-purple);
+      color:white;
+      text-align:center;
+    }
+    footer .small{ font-size:0.9rem; opacity:0.9 }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <img src="https://drive.google.com/uc?export=view&id=1EDpCtMIZotS8hZWRDAe3BDuyomBsJV6R" alt="V0XX Marketing Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#work">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="bg"></div>
+    <div class="hero-inner container">
+      <div>
+        <h1>Amplify Your Brand's Voice with V0XX Marketing.</h1>
+        <p class="lead">Data-driven digital marketing and stunning design built for ambitious brands in motion.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://wa.me/2347015139329" target="_blank">Chat on WhatsApp</a>
+          <a class="btn secondary" href="#services">Explore Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- SERVICES -->
+    <section id="services" class="container">
+      <div class="section-head">
+        <h2>Our Core Services</h2>
+      </div>
+
+      <div class="services-grid">
+        <article class="service" onclick="window.open('https://wa.me/2347015139329','_blank')">
+          <div class="icon">BI</div>
+          <div>
+            <h3>Branding &amp; Identity</h3>
+            <p>Logo &amp; Brand Kits, Web Design — create a strong, lasting visual identity.</p>
+          </div>
+        </article>
+
+        <article class="service" onclick="window.open('https://wa.me/2347015139329','_blank')">
+          <div class="icon">LG</div>
+          <div>
+            <h3>Lead Generation</h3>
+            <p>Targeted ads & campaigns that fuel measurable growth.</p>
+          </div>
+        </article>
+
+        <article class="service" onclick="window.open('https://wa.me/2347015139329','_blank')">
+          <div class="icon">VS</div>
+          <div>
+            <h3>Visual Storytelling</h3>
+            <p>Illustrations, animations, and designs that capture attention.</p>
+          </div>
+        </article>
+
+        <article class="service" onclick="window.open('https://wa.me/2347015139329','_blank')">
+          <div class="icon">DM</div>
+          <div>
+            <h3>Digital Marketing</h3>
+            <p>SEO & Social Media strategies for sustainable visibility.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container">
+      <div class="cta">
+        <div>
+          <h3>Ready to Amplify Your Growth?</h3>
+          <p>Start a conversation with us today.</p>
+        </div>
+        <a class="btn" href="https://wa.me/2347015139329" target="_blank">Chat on WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="container">
+      <p><strong>V0XX Marketing</strong></p>
+      <div class="small">
+        Nigeria • v0xxmarketing@proton.me
+      </div>
+    </div>
+  </footer>
+
+</body>
+    </html>
+  
