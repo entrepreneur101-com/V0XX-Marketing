@@ -1,0 +1,25 @@
+# netlify.toml - for single HTML file site
+[build]
+  publish = "."
+
+# Production settings
+[context.production]
+  # You could add a build command here if needed
+  # command = "npm run optimize-images"
+
+[context.production.headers]
+  # Add security headers
+  [context.production.headers["/*"]]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+
+# Preview deployments (PRs, branches)
+[context.deploy-preview.headers]  
+  [context.deploy-preview.headers["/*"]]
+    X-Robots-Tag = "noindex, nofollow"  # Don't index previews!
+
+# Basic redirects
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
