@@ -1,0 +1,15 @@
+# Basic redirects that work even with one HTML file
+[[redirects]]
+  from = "/home"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+
+# Prevent indexing on preview deploys
+[context.deploy-preview.headers]
+  [context.deploy-preview.headers["/*"]]
+    X-Robots-Tag = "noindex, nofollow"
