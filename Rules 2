@@ -1,0 +1,7 @@
+[context.production]
+  command = "cp index.html index-prod.html && echo 'Production build ready'"
+  publish = "."
+
+[context.deploy-preview]
+  command = "cp index-preview.html index.html && echo 'Preview build ready'" 
+  publish = "."
