@@ -1,0 +1,11 @@
+# netlify.toml
+[build]
+  publish = "."  # Current directory
+
+[context.production.environment]
+  GOOGLE_ANALYTICS_ID = "UA-PRODUCTION-123"
+  API_BASE_URL = "https://api.myapp.com"
+
+[context.deploy-preview.environment]  
+  GOOGLE_ANALYTICS_ID = "UA-TEST-456"
+  API_BASE_URL = "https://staging-api.myapp.com"
