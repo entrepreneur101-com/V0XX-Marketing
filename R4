@@ -1,0 +1,11 @@
+# Only deploy specific branches
+[context.production]
+  command = "echo 'Deploying to production'"
+  publish = "."
+
+[context.staging]
+  command = "echo 'Deploying to staging'"
+  publish = "."
+
+# Disable branch deploys for random feature branches
+# (This is set in Netlify UI under Deploy Settings)
